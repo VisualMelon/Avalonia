@@ -326,7 +326,7 @@
     </Style>
 
     <!--  Pressed State  -->
-    <Style Selector="^:pressed">
+    <Style Selector="^:dragging">
       <Style Selector="^ /template/ Grid#SliderContainer">
         <Setter Property="Background" Value="{DynamicResource SliderContainerBackgroundPressed}" />
       </Style>

@@ -46,7 +46,7 @@ namespace Avalonia.Controls
     [TemplatePart("PART_DecreaseButton", typeof(Button))]
     [TemplatePart("PART_IncreaseButton", typeof(Button))]
     [TemplatePart("PART_Track",          typeof(Track))]
-    [PseudoClasses(":vertical", ":horizontal", ":pressed")]
+    [PseudoClasses(":vertical", ":horizontal", ":pressed", ":dragging")]
     public class Slider : RangeBase
     {
         /// <summary>
@@ -346,6 +346,7 @@ namespace Avalonia.Controls
             if (!IsEnabled)
             {
                 _isDragging = false;
+                PseudoClasses.Set(":dragging", _isDragging);
                 return;
             }
 
@@ -358,6 +359,7 @@ namespace Avalonia.Controls
         private void TrackReleased(object? sender, PointerReleasedEventArgs e)
         {
             _isDragging = false;
+            PseudoClasses.Set(":dragging", _isDragging);
         }
 
         private void TrackPressed(object? sender, PointerPressedEventArgs e)
@@ -366,6 +368,7 @@ namespace Avalonia.Controls
             {
                 MoveToPoint(e.GetCurrentPoint(_track));
                 _isDragging = true;
+                PseudoClasses.Set(":dragging", _isDragging);
             }
         }
 
@@ -428,6 +431,7 @@ namespace Avalonia.Controls
         protected virtual void OnThumbDragStarted(VectorEventArgs e)
         {
             _isDragging = true;
+            PseudoClasses.Set(":dragging", _isDragging);
         }
 
         /// <summary>
@@ -437,6 +441,7 @@ namespace Avalonia.Controls
         protected virtual void OnThumbDragCompleted(VectorEventArgs e)
         {
             _isDragging = false;
+            PseudoClasses.Set(":dragging", _isDragging);
         }
 
         /// <summary>
