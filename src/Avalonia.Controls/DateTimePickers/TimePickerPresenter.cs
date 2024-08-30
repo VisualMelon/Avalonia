@@ -241,7 +241,7 @@ namespace Avalonia.Controls
                 hr = per == 1 ? (hr == 12) ? 12 : hr + 12 : per == 0 && hr == 12 ? 0 : hr;
             }
 
-            SetCurrentValue(TimeProperty, new TimeSpan(hr, min, sec));
+            SetCurrentValue(TimeProperty, new TimeSpan(hr, min, UseSeconds ? sec : 0));
 
             base.OnConfirmed();
         }
